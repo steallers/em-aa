@@ -1,0 +1,114 @@
+syntax = "proto3";
+
+package connectors;
+option go_package = "./pb;pb";
+
+// =================================
+// Add New Employee Block
+// =================================
+message AddNewEmployeeRequest {
+  uint64 UserID = 1;
+  string PersonalNumber = 2;
+  string FirstName = 3;
+  string MiddleName = 4;
+  string LastName = 5;
+  string Gender = 6;
+  string BirthDate = 7;
+}
+message AddNewEmployeeResponses {
+  string Status = 1;  // success, failed
+  string Message = 2; // failed because what ? will describe here
+}
+
+// =================================
+// Remove Employee Block
+// =================================
+message RemoveEmployeeResponse {
+  string Status = 1;  // success, failed
+  string Message = 2; // failed because what ? will describe here
+}
+message RemoveEmployeeRequest {
+  uint64 UserID = 1;
+  uint64 EmployeeID = 2;
+}
+
+// =================================
+// Update Employee Data Block
+// =================================
+message UpdateEmployeeDataRequest {
+  uint64 UserID = 1;
+  uint64 EmployeeID = 2;
+  string FirstName = 3;
+  string MiddleName = 4;
+  string LastName = 5;
+}
+message UpdateEmployeeDataResponses{
+  string Status = 1;  // success, failed
+  string Message = 2; // failed because what ? will describe here
+}
+
+// =================================
+// Update Employee Profile Picture Data Block
+// =================================
+message UpdateEmployeeProfilePictureRequest {
+  uint64 UserID = 1;
+  uint64 EmployeeID = 2;
+  string Base64Picture = 3;
+}
+message UpdateEmployeeProfilePictureResponses{
+  string Status = 1;  // success, failed
+  string Message = 2; // failed because what ? will describe here
+}
+
+// =================================
+// Add Employee Contact
+// =================================
+message AddEmployeeContactRequest{
+  uint64 UserID = 1;
+  uint64 EmployeeID = 2;
+  string ContactType = 3;
+  string ContactValue = 4;
+}
+message AddEmployeeContactResponses{
+  string Status = 1;  // success, failed
+  string Message = 2; // failed because what ? will describe here
+}
+
+// =================================
+// Remove Employee Contact
+// =================================
+message RemoveEmployeeContactRequest{
+  uint64 UserID = 1;
+  uint64 EmployeeID = 2;
+  string ContactID = 3;
+}
+message RemoveEmployeeContactResponses{
+  string Status = 1;  // success, failed
+  string Message = 2;  // failed because what ? will describe here
+}
+
+// =================================
+// Update Employee Contact
+// =================================
+message UpdateEmployeeContactRequest{
+  uint64 UserID = 1;
+  uint64 EmployeeID = 2;
+  string ContactID = 3;
+  string ContactType = 4;
+  string ContactValue = 5;
+}
+message UpdateEmployeeContactResponses{
+  string Status = 1;  // success, failed
+  string Message = 2;  // failed because what ? will describe here
+}
+
+service EmployeeService {
+  rpc AddNewEmployee(AddNewEmployeeRequest) returns (AddNewEmployeeResponses){}
+  rpc RemoveEmployee(RemoveEmployeeRequest) returns(RemoveEmployeeResponse){}
+  rpc UpdateEmployeeData(UpdateEmployeeDataRequest) returns (UpdateEmployeeDataResponses){}
+  rpc UpdateEmployeeProfilePicture(UpdateEmployeeProfilePictureRequest) returns(UpdateEmployeeProfilePictureResponses){}
+  // employee contacts
+  rpc AddEmployeeContact(AddEmployeeContactRequest) returns(AddEmployeeContactResponses){}
+  rpc RemoveEmployeeContact(RemoveEmployeeContactRequest) returns(RemoveEmployeeContactResponses){}
+  rpc UpdateEmployeeContact(UpdateEmployeeContactRequest) returns (UpdateEmployeeContactResponses){}
+}
