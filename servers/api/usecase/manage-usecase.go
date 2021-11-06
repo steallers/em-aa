@@ -3,9 +3,10 @@ package usecase
 import (
 	"errors"
 	"fmt"
-	. "github.com/steallers/employee-management/api/constant"
-	"github.com/steallers/employee-management/api/model"
-	"github.com/steallers/employee-management/api/repository"
+
+	. "github.com/steallers/em-aa/servers/api/constant"
+	"github.com/steallers/em-aa/servers/api/model"
+	"github.com/steallers/em-aa/servers/api/repository"
 	"gorm.io/gorm"
 )
 

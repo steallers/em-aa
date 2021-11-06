@@ -2,17 +2,17 @@ package main
 
 import (
 	"fmt"
-	"github.com/steallers/employee-management/api/model"
-	"github.com/steallers/employee-management/api/repository"
-	"github.com/steallers/employee-management/api/usecase"
-	"github.com/steallers/employee-management/services/database"
-	"gorm.io/gorm"
 	"log"
 	"net"
 	"time"
 
-	"github.com/steallers/employee-management/chat"
-	server "github.com/steallers/employee-management/pb"
+	"github.com/steallers/em-aa/servers/api/model"
+	"github.com/steallers/em-aa/servers/api/repository"
+	"github.com/steallers/em-aa/servers/api/usecase"
+	"github.com/steallers/em-aa/servers/services/database"
+	"gorm.io/gorm"
+
+	server "github.com/steallers/em-aa/pb"
 	"google.golang.org/grpc"
 )
 
@@ -30,7 +30,6 @@ func main() {
 
 	//Building All Repository
 	employeeRepository := repository.CreateEmployeeRepository(databaseService.GetConnectors())
-	s := chat.Server{}
 	//
 
 	//Building All UseCase
@@ -47,7 +46,7 @@ func main() {
 
 	eid, err := managerUseCase.AddNewEmployee(newEmployeeModel)
 	log.Printf("employee id is :%d", eid)
-	log.Printf("error is : %e",err)
+	log.Printf("error is : %e", err)
 	//Building All Servers
 	f := server.Handler{
 		//Register all Use Case here
@@ -55,7 +54,6 @@ func main() {
 	}
 	grpcServer := grpc.NewServer()
 
-	chat.RegisterChatServiceServer(grpcServer, &s)
 	server.RegisterEmployeeServiceServer(grpcServer, &f)
 
 	if err := grpcServer.Serve(lis); err != nil {

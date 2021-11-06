@@ -1,4 +1,4 @@
-module github.com/steallers/employee-management
+module github.com/steallers/em-aa
 
 go 1.17
 
@@ -28,4 +28,5 @@ require (
 	golang.org/x/sys v0.0.0-20210615035016-665e8c7367d1 // indirect
 	golang.org/x/text v0.3.7 // indirect
 	google.golang.org/genproto v0.0.0-20200526211855-cb27e3aa2013 // indirect
+	google.golang.org/grpc/cmd/protoc-gen-go-grpc v1.1.0 // indirect
 )

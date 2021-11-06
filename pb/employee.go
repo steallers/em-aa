@@ -3,10 +3,11 @@ package pb
 import (
 	"context"
 	"fmt"
-	"github.com/steallers/employee-management/api/model"
-	"gorm.io/gorm"
 	"log"
 	"time"
+
+	"github.com/steallers/em-aa/servers/api/model"
+	"gorm.io/gorm"
 )
 
 func (h Handler) AddNewEmployee(ctx context.Context, in *AddNewEmployeeRequest) (*AddNewEmployeeResponses, error) {

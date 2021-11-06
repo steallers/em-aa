@@ -1,9 +1,10 @@
 package repository
 
 import (
-	"github.com/steallers/employee-management/api/model"
-	"gorm.io/gorm"
 	"log"
+
+	"github.com/steallers/em-aa/servers/api/model"
+	"gorm.io/gorm"
 )
 
 type EmployeeRepository struct {
@@ -15,6 +16,7 @@ func CreateEmployeeRepository(connectors *gorm.DB) EmployeeRepositoryInterface {
 		connectors,
 	}
 }
+
 // Deprecated: InsertEmployeeData
 func (rep EmployeeRepository) InsertEmployeeData(employee model.Employee) (newEmployee model.Employee, err error) {
 	log.Printf("employee %+v", &employee)

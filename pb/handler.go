@@ -2,14 +2,13 @@ package pb
 
 import (
 	"context"
-	"github.com/steallers/employee-management/api/usecase"
+
+	"github.com/steallers/em-aa/servers/api/usecase"
 )
 
 type Handler struct {
 	Manager usecase.ManagerUseCaseInterface
 }
-
-
 
 func (h Handler) UpdateEmployeeData(ctx context.Context, request *UpdateEmployeeDataRequest) (*UpdateEmployeeDataResponses, error) {
 	panic("implement me")
@@ -34,4 +33,3 @@ func (h Handler) UpdateEmployeeContact(ctx context.Context, request *UpdateEmplo
 func (h Handler) mustEmbedUnimplementedEmployeeServiceServer() {
 	panic("implement me")
 }
-

@@ -3,10 +3,11 @@ package database
 import (
 	"errors"
 	"fmt"
-	"github.com/steallers/employee-management/api/model"
+	"log"
+
+	"github.com/steallers/em-aa/servers/api/model"
 	"gorm.io/driver/postgres"
 	"gorm.io/gorm"
-	"log"
 )
 
 type DatabaseService struct {
